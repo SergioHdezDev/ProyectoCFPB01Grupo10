@@ -1,5 +1,5 @@
 - Integrantes: 
-
-  1. Sergio Luis Hernández Ensuncho
+1. Sergio Luis Hernández Ensuncho
+2. Camilo Andres Lopez Castro
 
 - Enlace al repositorioi: https://github.com/SergioHdezDev/ProyectoCFP01Grupo10.git
