@@ -3,4 +3,5 @@
 Integrantes: 
 
 - Sergio Luis Hernández Ensuncho
+- Camilo Andres Lopez Castro
 
