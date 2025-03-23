@@ -1,10 +1,8 @@
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,14 +13,14 @@ public class GenerateInfoFiles {
 
     // Constantes para vendedores
     private static final String TIPO_DOCUMENTO = "CC";
-    private static final String[] NOMBRES = {"Ana María", "Carlos Andrés", "Luis Fernando",
-            "María José", "Juan Pablo", "Sofía Alejandra",
-            "Diego Armando", "Carmen Rosa", "Laura Beatriz",
-            "José Antonio"};
-    private static final String[] APELLIDOS = {"García López", "Rodríguez Pérez", "Martínez González",
-            "Hernández Sánchez", "López Ramírez", "Pérez Flores",
-            "Gómez Mendoza", "Díaz Castro", "Vargas Rojas",
-            "Morales Suárez"};
+    private static final String[] NOMBRES = {"Valentina Sofía", "Emilio Ricardo", "Mateo Esteban",
+            "Luciana Gabriela", "Sebastián Alejandro", "Camila Fernanda",
+            "Mariana Isabel", "Daniel Eduardo", "Gabriela Juliana",
+            "Andrés Felipe"};
+    private static final String[] APELLIDOS = {"Torres Sánchez", "Ríos Fernández", "Jiménez Herrera",
+            "Ortega Gómez", "Castro Pérez", "López Martínez",
+            "Pérez Duarte", "Ruiz Montoya", "Vargas Rojas",
+            "Gómez Ramírez"};
 
     // Constantes para productos
     private static final String[] CATEGORIAS = {"Laptop", "Camiseta", "Zapatos", "Teléfono", "Libro", "Mochila"};
@@ -30,7 +28,7 @@ public class GenerateInfoFiles {
     private static final String[] MARCAS = {"HP", "Nike", "Samsung", "Apple", "Adidas", "Dell"};
 
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         int opcion;
         do {
             mostrarMenu();
@@ -50,7 +48,8 @@ public class GenerateInfoFiles {
                         createProductsFile(15, "datos/productos.csv");
                         break;
                     case 4:
-                        createSalesReport(20, "datos/ventas.csv", "datos/vendedores.csv", "datos/productos.csv");
+                        ventasPorVendedor();
+                        //createSalesReport(20, "datos/ventas.csv", "datos/vendedores.csv", "datos/productos.csv");
                         break;
                     case 5:
                         createVendorsFile(10, "datos/vendedores.csv");
@@ -74,7 +73,7 @@ public class GenerateInfoFiles {
         System.out.println("1. Generar archivo de vendedores");
         System.out.println("2. Generar archivo de productos");
         System.out.println("3. Generar archivos de vendedores y productos");
-        System.out.println("4. Generar reporte de ventas");
+        System.out.println("4. Generar reporte de ventas por vendedor");
         System.out.println("5. Generar todos los archivos");
         System.out.println("6. Salir");
         System.out.print("Seleccione una opción: ");
@@ -179,6 +178,73 @@ public class GenerateInfoFiles {
             }
             System.out.println("\nReporte de ventas generado: " + fileName);
         }
+    }
+
+    public static void ventasPorVendedor(){
+        try(BufferedReader br = new BufferedReader(new FileReader("datos/vendedores.csv"))) {
+            String linea;
+            int numLinea = 0;
+            while((linea=br.readLine())!=null) {
+                if (numLinea == 0) {
+                    numLinea++;
+                    continue;
+                }
+                String[] columnas = linea.split(";");
+                long idVendedor = Long.parseLong(columnas[1]);
+                createSalesMenFile(random.nextInt(10), idVendedor);
+                numLinea++;
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void createSalesMenFile(int randomSalesCount, long id) {
+        String fileName = "datos/ventas_"+id+".csv";
+        try (BufferedWriter writer = new BufferedWriter(
+                new OutputStreamWriter(
+                        new FileOutputStream(fileName), StandardCharsets.UTF_8))) {
+
+            writer.write("ID_PRODUCTO;CANTIDAD" + System.lineSeparator());
+
+            for (int i = 1; i <= randomSalesCount; i++) {
+                ArrayList<String> productos = idProductos();
+                int cantidad_productos = productos.size();
+
+
+                String nuevaLinea = productos.get(random.nextInt(cantidad_productos))+";"+random.nextInt(100);
+                writer.write(nuevaLinea+System.lineSeparator());
+
+            }
+            System.out.println("\nArchivo de ventas generado: " + fileName);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public static ArrayList<String> idProductos(){
+        String fileName = "datos/productos.csv";
+        ArrayList<String> ids = new ArrayList<>();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String linea;
+            int numLinea = 0;
+            while((linea = br.readLine())!=null){
+                if(numLinea == 0){
+                    numLinea++;
+                    continue;
+                }
+                String[] columnas = linea.split(";");
+                ids.add(columnas[0]);
+                numLinea++;
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return ids;
     }
 
     private static String generateProductName() {
