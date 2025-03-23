@@ -15,14 +15,14 @@ public class GenerateInfoFiles {
 
     // Constantes para vendedores
     private static final String TIPO_DOCUMENTO = "CC";
-    private static final String[] NOMBRES = {"Ana María", "Carlos Andrés", "Luis Fernando",
-            "María José", "Juan Pablo", "Sofía Alejandra",
-            "Diego Armando", "Carmen Rosa", "Laura Beatriz",
-            "José Antonio"};
-    private static final String[] APELLIDOS = {"García López", "Rodríguez Pérez", "Martínez González",
-            "Hernández Sánchez", "López Ramírez", "Pérez Flores",
-            "Gómez Mendoza", "Díaz Castro", "Vargas Rojas",
-            "Morales Suárez"};
+    private static final String[] NOMBRES = {"Valentina Sofía", "Emilio Ricardo", "Mateo Esteban",
+            "Luciana Gabriela", "Sebastián Alejandro", "Camila Fernanda",
+            "Mariana Isabel", "Daniel Eduardo", "Gabriela Juliana",
+            "Andrés Felipe"};
+    private static final String[] APELLIDOS = {"Torres Sánchez", "Ríos Fernández", "Jiménez Herrera",
+            "Ortega Gómez", "Castro Pérez", "López Martínez",
+            "Pérez Duarte", "Ruiz Montoya", "Vargas Rojas",
+            "Gómez Ramírez"};
 
     // Constantes para productos
     private static final String[] CATEGORIAS = {"Laptop", "Camiseta", "Zapatos", "Teléfono", "Libro", "Mochila"};
