@@ -2,9 +2,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class GenerateInfoFiles {
 
@@ -54,7 +52,8 @@ public class GenerateInfoFiles {
                     case 5:
                         createVendorsFile(10, "datos/vendedores.csv");
                         createProductsFile(15, "datos/productos.csv");
-                        createSalesReport(20, "datos/ventas.csv", "datos/vendedores.csv", "datos/productos.csv");
+                        ventasPorVendedor();
+                        //createSalesReport(20, "datos/ventas.csv", "datos/vendedores.csv", "datos/productos.csv");
                         break;
                     case 6:
                         System.out.println("Saliendo del sistema...");
@@ -191,7 +190,7 @@ public class GenerateInfoFiles {
                 }
                 String[] columnas = linea.split(";");
                 long idVendedor = Long.parseLong(columnas[1]);
-                createSalesMenFile(random.nextInt(10), idVendedor);
+                createSalesMenFile(random.nextInt(15), idVendedor);
                 numLinea++;
             }
         }catch(IOException e){
@@ -201,18 +200,27 @@ public class GenerateInfoFiles {
 
     public static void createSalesMenFile(int randomSalesCount, long id) {
         String fileName = "datos/ventas_"+id+".csv";
+        Set<String> idProductosUnico = new HashSet<>();
+
         try (BufferedWriter writer = new BufferedWriter(
                 new OutputStreamWriter(
                         new FileOutputStream(fileName), StandardCharsets.UTF_8))) {
 
             writer.write("ID_PRODUCTO;CANTIDAD" + System.lineSeparator());
+            ArrayList<String> productos = idProductos();
+            int cantidad_productos = productos.size();
+            String productoId;
 
             for (int i = 1; i <= randomSalesCount; i++) {
-                ArrayList<String> productos = idProductos();
-                int cantidad_productos = productos.size();
 
 
-                String nuevaLinea = productos.get(random.nextInt(cantidad_productos))+";"+random.nextInt(100);
+                do {
+                    productoId = productos.get(random.nextInt(cantidad_productos));
+                } while (idProductosUnico.contains(productoId));
+
+                idProductosUnico.add(productoId);
+
+                String nuevaLinea = productoId+";"+random.nextInt(100);
                 writer.write(nuevaLinea+System.lineSeparator());
 
             }
