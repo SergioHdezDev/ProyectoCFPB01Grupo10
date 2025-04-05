@@ -182,23 +182,19 @@ public class GenerateInfoFiles {
     public static void ventasPorVendedor(){
         try(BufferedReader br = new BufferedReader(new FileReader("datos/vendedores.csv"))) {
             String linea;
-            int numLinea = 0;
+
             while((linea=br.readLine())!=null) {
-                if (numLinea == 0) {
-                    numLinea++;
-                    continue;
-                }
+
                 String[] columnas = linea.split(";");
-                long idVendedor = Long.parseLong(columnas[1]);
+                String idVendedor = columnas[1].toString();
                 createSalesMenFile(random.nextInt(15), idVendedor);
-                numLinea++;
             }
         }catch(IOException e){
             e.printStackTrace();
         }
     }
 
-    public static void createSalesMenFile(int randomSalesCount, long id) {
+    public static void createSalesMenFile(int randomSalesCount, String id) {
         String fileName = "datos/ventas_"+id+".csv";
         Set<String> idProductosUnico = new HashSet<>();
 
@@ -238,15 +234,11 @@ public class GenerateInfoFiles {
 
         try(BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String linea;
-            int numLinea = 0;
+
             while((linea = br.readLine())!=null){
-                if(numLinea == 0){
-                    numLinea++;
-                    continue;
-                }
+
                 String[] columnas = linea.split(";");
                 ids.add(columnas[0]);
-                numLinea++;
             }
         }catch (IOException e){
             e.printStackTrace();
