@@ -9,8 +9,54 @@ public class Main {
     private static ArrayList<Map<String,Object>> empleados = new ArrayList<>();
     private static ArrayList<Map<String,Object>> productos = new ArrayList<>();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("\n1. Generar archivos base");
+            System.out.println("2. Generar reporte de ventas");
+            System.out.println("3. Salir");
+            System.out.print("\nDigite opción: ");
+            opcion = scanner.nextInt();
+            scanner.nextLine();
 
+            switch (opcion){
+                case 1:
+                    generarArchivosBase();
+                    break;
+                case 2:
+                    try{
+                        generarReportesVentas();
+                    } catch (IOException e) {
+                        System.out.println("Se presentó un error al generar el reporte de ventas");
+                    }
+
+                    break;
+                case 3:
+                    System.out.println("Opción no valida");
+            }
+
+        }while (opcion != 3);
+
+
+    }
+
+    public static void generarArchivosBase(){
+        try{
+            GenerateInfoFiles.createVendorsFile(10, "datos/vendedores.csv");
+        }catch (IOException e){
+            System.out.println("Se presentó un error al generar archivo de vendedores");
+        }
+
+        try{
+            GenerateInfoFiles.createProductsFile(15, "datos/productos.csv");
+        }catch (IOException e){
+            System.out.println("Se presento un error al generar archivo de productos");
+        }
+        GenerateInfoFiles.ventasPorVendedor();
+    }
+
+    public static void generarReportesVentas() throws IOException{
         System.out.println("Validando archivos de ventas");
         DataValidator.validarArchivosDeVentasEnCarpeta("datos");
 
