@@ -10,6 +10,10 @@ public class Main {
     private static ArrayList<Map<String,Object>> productos = new ArrayList<>();
 
     public static void main(String[] args) {
+        menu();
+
+    }
+    public static void menu() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
         do {
@@ -33,11 +37,13 @@ public class Main {
 
                     break;
                 case 3:
+                    System.out.println("saliendo...");
+                    break;
+                default:
                     System.out.println("Opción no valida");
             }
 
         }while (opcion != 3);
-
 
     }
 
