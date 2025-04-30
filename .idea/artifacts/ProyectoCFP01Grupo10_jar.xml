@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProyectoCFP01Grupo10:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProyectoCFP01Grupo10_jar</output-path>
+    <root id="archive" name="ProyectoCFP01Grupo10.jar">
+      <element id="module-output" name="ProyectoCFP01Grupo10" />
+    </root>
+  </artifact>
+</component>
