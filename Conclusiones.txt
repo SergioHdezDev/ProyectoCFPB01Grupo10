@@ -1,0 +1,10 @@
+1. Lo aprendido durante el desarrollo del proyecto:
+Durante el desarrollo de este proyecto aprendimos a trabajar con archivos planos (CSV), leerlos y escribirlos usando Java. Reforzamos conceptos en el manejo de excepciones (try-catch), estructura de datos como ArrayList y HashMap, y la importancia de validar correctamente los datos de entrada. También entendimos mejor cómo estructurar programas en varias clases y separar responsabilidades entre generación de datos y procesamiento.
+
+2. Posibles aplicaciones en la vida profesional:
+Las habilidades que fueron adquiridas en este proyecto son aplicables en diversos entornos profesionales, en nuestro caso en la manipulación de archivos CSV, el manejo de estructuras de datos, y el procesamiento de información mediante java. Estas competencias podemos aplicarlas en la automatización de procesos, generación de reportes de bases de datos, administración de inventarios y control de sistemas de información, tareas que están estrechamente relacionadas con las funciones de nuestra profesión. 
+
+3. Dificultades presentadas durante el desarrollo del proyecto:
+Uno de los principales retos que enfrentamos consistió en diseñar una validación robusta que capturara todos los posibles errores de formato o datos erróneos, y en mostrar los errores de manera clara por consola para facilitar su corrección. Este validador garantiza que únicamente se procesen archivos válidos al momento de generar el reporte de ventas.
+
+Otra dificultad fue la consolidación de información teniendo en cuenta que esta se encontraba en diferentes archivos, lo que requirió de leer primero la información de un archivo y luego utilizar esa información para consolidar los datos de ventas que se encontraban dispersos en varios archivos por vendedor. 
