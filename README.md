@@ -5,3 +5,6 @@ Integrantes:
 - Sergio Luis Hernández Ensuncho
 - Camilo Andres Lopez Castro
 - Karen Johana Lopez Ramirez
+
+Video sustentación:
+https://poligran-my.sharepoint.com/:v:/g/personal/sehernandez5_poligran_edu_co/EYKFdlJ9HHhGtCtQLoyoPZYBH7wW-F3l0vVLBYHrcOrGpw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=IdnT94
